@@ -1,9 +1,6 @@
 <head>
 	<title>Host FV Chess (Discord)</title>
 
-	<!-- Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 	<script type="text/javascript">
 
 		function createMessages() {
@@ -56,11 +53,11 @@
 		}
 
 		h2 {
-			border: 2px solid mediumslateblue;
+			border: 4px solid mediumslateblue;
 			text-align: center;
 			color: aquamarine;
-			padding-top: 15px;
-			padding-bottom: 15px;
+			padding-top: 10px;
+			padding-bottom: 10px;
 		}
 
 		h3 {
@@ -72,9 +69,8 @@
 
 		h4 {
 			color: yellow;
-			padding-left: 75px;
+			padding-left: 60px;
 			padding-top: 15px;
-			padding-bottom: 5px;
 		}
 
 		form {
@@ -97,7 +93,9 @@
 		}
 
 		highlight {
-			font: 16px serif;
+			padding-left: 8px;
+			padding-right: 8px;
+
 			background-color: rgb(43, 16, 59);
 			word-wrap: normal;
 			border: 1px solid rgb(212, 0, 255);
@@ -125,10 +123,9 @@
 	<h3>At 1 hour till: <a href="https://twitter.com/home">Twitter</a> and <a
 			href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess
 			Announcements</a></h3>
-	<highlight>Heyo Chess Floofs! In 60 minutes is the <u id="dow1"></u> Night Chess tournament! We will be in the chess
-		VC if you
-		want
-		to talk with other Floofs! Hope to see you there and good luck!
+	<highlight>Heyo Chess Floofs! In 60 minutes is the <u id="dow1"></u> Night Chess tournament!
+		We will be in the chess
+		VC if you want to talk with other Floofs! Hope to see you there and good luck!
 		<br>
 		Link: <u id="link1"></u>
 		<br>
@@ -168,7 +165,6 @@
 	<br>
 
 
-
 	<h4 id="generated">Fill this out and click the button to generate messages ^-^</h4>
 
 	<div>
@@ -176,7 +172,8 @@
 			<label for="tournament-url">Tournament URL:</label>
 			<input id="tournament-url" type="text" name="URL">
 			<br>
-			<label for="pass">Password:</label>
+			<label for="pass">Password:
+				&emsp;&emsp;&emsp;</label>
 			<input id="pass" type="text" name="pass">
 			<br>
 			<input type="button" onclick="createMessages()" value="Create Messages">
