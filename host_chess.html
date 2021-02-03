@@ -1,30 +1,34 @@
 <head>
 	<title>Host FV Chess (Discord)</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
+		integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
 	<script type="text/javascript">
 
 		function createMessages() {
 			var form = document.getElementById('createForm');
+			var generated = document.getElementById('generated')
 
-			var day = new Date().getDay()
-			day = dayOfWeekAsString(day)
+			var day = dayOfWeekAsString(new Date().getDay())
 
 			var chessLink = document.getElementById('tournament-url').value
 			var password = document.getElementById('pass').value
 
-			alert('Good evening FV admin. Creating chess messages for ' + day + '...')
+			generated.textContent = 'Generated ' + day + ' Messages. Enjoy! ^-^'
 
-			document.getElementById('dow1').append(day)
-			document.getElementById('dow2').append(day)
-			document.getElementById('dow3').append(day)
-			document.getElementById('daycmd').append(day)
+			document.getElementById('dow1').textContent = (day)
+			document.getElementById('dow2').textContent = (day)
+			document.getElementById('dow3').textContent = (day)
+			document.getElementById('daycmd').textContent = (day)
 
-			document.getElementById('link1').append(chessLink)
-			document.getElementById('link2').append(chessLink)
-			document.getElementById('link3').append(chessLink)
+			document.getElementById('link1').textContent = (chessLink)
+			document.getElementById('link2').textContent = (chessLink)
+			document.getElementById('link3').textContent = (chessLink)
 
-			document.getElementById('pass1').append(password)
-			document.getElementById('pass2').append(password)
-			document.getElementById('pass3').append(password)
+			document.getElementById('pass1').textContent = (password)
+			document.getElementById('pass2').textContent = (password)
+			document.getElementById('pass3').textContent = (password)
 
 		}
 
@@ -33,85 +37,164 @@
 		}
 
 	</script>
+	<style>
+		div {
+			border: 15px solid mediumslateblue;
+			background-color: turquoise;
+			text-align: center;
+		}
+
+		padding {
+			padding-left: 75px;
+			background-color: lavender;
+		}
+
+		h1 {
+			color: purple;
+			text-shadow: 20px black;
+			font: italic bold 32px Georgia, serif;
+		}
+
+		h2 {
+			border: 2px solid mediumslateblue;
+			text-align: center;
+			color: aquamarine;
+			padding-top: 15px;
+			padding-bottom: 15px;
+		}
+
+		h3 {
+			border: 2px solid mediumslateblue;
+			padding-left: 25px;
+			padding-top: 5px;
+			padding-bottom: 5px;
+		}
+
+		h4 {
+			color: yellow;
+			padding-left: 75px;
+			padding-top: 15px;
+			padding-bottom: 5px;
+		}
+
+		form {
+			padding-top: 15px;
+			padding-bottom: 15px;
+			color: purple;
+		}
+
+		a {
+			color: aqua;
+			text-decoration: underline;
+		}
+
+		body {
+			background-color: black;
+			color: lavender;
+			padding-left: 15px;
+			padding-right: 15px;
+			font: arial, serif;
+		}
+
+		highlight {
+			font: 16px serif;
+			background-color: rgb(43, 16, 59);
+			word-wrap: normal;
+			border: 1px solid rgb(212, 0, 255);
+		}
+	</style>
 </head>
 
-<br>
-<h1>Host Furry Valley Chess Tournament</h1>
-<br>
-step 1: Join chess VC
-<br>
-Step 2: <a href="https://lichess.org/tournament/new">Create chess tournament</a>
-<br>
-<u>Paste tournament URL in the form below</u>
-<br>
-
-
-<h2>Chess Announcement Messages</h2>
-
-<h3>At 1 hour till: <a href="https://twitter.com/home">Twitter</a> and <a
-		href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess
-		Announcements</a></h3>
-Heyo Chess Floofs! In 60 minutes is the <b id="dow1"></b> Night Chess tournament! We will be in the chess VC if you want
-to talk with other Floofs! Hope to see you there and good luck!
-<br>
-Link: <b id="link1"></b>
-<br>
-Password: <b id="pass1"></b>
-<br>
-<br>
-<h3>At 30 minutes till: <a href="https://discord.com/channels/282819774621417483/679302617289064468">#Admin Event
-		Hosting</a></h3>
-<mark>!lfg chess casual tournament <i id="daycmd"></i> night 8pm</mark>
-<br>
-<u><b>React to 1 or two blocks.</b></u>
-<br>
-<br>
-`Hey floof! In 30 minutes we are going to have the <b id="dow2"></b> Chess Tournament of Furry Valley! If
-you want to join us, use the link and password given below! Also, you can join the VC to talk to others while playing
-some chess. Hope to see you there!
-<br>
-Link: <b id="link2"></b>
-<br>
-Password: <b id="pass2"></b>
-`
-<br>
-<br>
-<h3>At 5-10 minutes till: <a href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess
-		Announcements</a></h3>
-Heyo Chess Floofs! In 5 minutes is the <b id="dow3"></b> Night Chess tournament! We will be in the chess VC if you want
-to talk with other Floofs! Hope to see you there and Good luck!
-<br>
-Link: <b id="link3"></b>
-<br>
-Password: <b id="pass3"></b>
-<br>
-<br>
-
-
-
-
-<mark>Fill this out and click the button to generate messages <b>^-^</b></mark>
-<br>
-<form id="createForm" action="createMessages()">
-	<label for="tournament-url">Tournament URL:</label>
-	<input id="tournament-url" type="text" name="URL">
+<body>
 	<br>
-	<label for="pass">Password:</label>
-	<input id="pass" type="text" name="pass">
+	<div>
+		<h1>Host Furry Valley Chess Tournament</h1>
+	</div>
 	<br>
-	<input type="button" onclick="createMessages()" value="Create Messages">
-</form>
+	- step 1: Join chess VC
+	<br>
+	- Step 2: <a href="https://lichess.org/tournament/new">Create chess tournament</a>
+	<br>
+	- Step 3: Paste tournament URL in the form below
+	<br>
 
-<br><br><br>
-<a href="https://lichess.org/tournament/new">Create chess tournament</a>
-<br>
-<br>
-<a href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess Announcements</a>
-<br>
-<br>
+	<h2>
+		Chess Announcement Messages
+	</h2>
 
-<a href="https://discord.com/channels/282819774621417483/679302617289064468">#Admin Event Hosting</a>
-<br>
-<br>
-<a href="https://twitter.com/home">Twitter</a>
-<br><br><br>
+	<h3>At 1 hour till: <a href="https://twitter.com/home">Twitter</a> and <a
+			href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess
+			Announcements</a></h3>
+	<highlight>Heyo Chess Floofs! In 60 minutes is the <u id="dow1"></u> Night Chess tournament! We will be in the chess
+		VC if you
+		want
+		to talk with other Floofs! Hope to see you there and good luck!
+		<br>
+		Link: <u id="link1"></u>
+		<br>
+		Password: <u id="pass1"></u>
+	</highlight>
+	<br>
+	<br>
+	<h3>At 30 minutes till: <a href="https://discord.com/channels/282819774621417483/679302617289064468">#Admin Event
+			Hosting</a></h3>
+	<highlight>!lfg chess casual tournament <u id="daycmd"></u> night 8pm</highlight>
+	<br>
+	** Enter above command and react to one or two blocks. (Message people in those blocks) **
+	<br>
+	<br>
+	<highlight>`Hey floof! In 30 minutes we are going to have the <u id="dow2"></u> Chess Tournament of Furry Valley! If
+		you want to join us, use the link and password given below! Also, you can join the VC to talk to others while
+		playing
+		some chess. Hope to see you there!
+		<br>
+		Link: <u id="link2"></u>
+		<br>
+		Password: <u id="pass2"></u>
+		`
+	</highlight>
+	<br>
+	<br>
+	<h3>At 5-10 minutes till: <a href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess
+			Announcements</a></h3>
+	<highlight> Heyo Chess Floofs! In 5 minutes is the <u id="dow3"></u> Night Chess tournament!
+		We will be in the chess VC if you want to talk with other Floofs! Hope to see you there and Good luck!
+		<br>
+		Link: <u id="link3"></u>
+		<br>
+		Password: <u id="pass3"></u>
+	</highlight>
+	<br>
+	<br>
+
+
+
+	<h4 id="generated">Fill this out and click the button to generate messages ^-^</h4>
+
+	<div>
+		<form id="createForm" action="createMessages()">
+			<label for="tournament-url">Tournament URL:</label>
+			<input id="tournament-url" type="text" name="URL">
+			<br>
+			<label for="pass">Password:</label>
+			<input id="pass" type="text" name="pass">
+			<br>
+			<input type="button" onclick="createMessages()" value="Create Messages">
+		</form>
+		<h1 id="generated"></h1>
+	</div>
+
+	<br><br><br>
+	<a href="https://lichess.org/tournament/new">Create chess tournament</a>
+	<br>
+	<br>
+	<a href="https://discord.com/channels/282819774621417483/772261264062939146">#Chess Announcements</a>
+	<br>
+	<br>
+
+	<a href="https://discord.com/channels/282819774621417483/679302617289064468">#Admin Event Hosting</a>
+	<br>
+	<br>
+	<a href="https://twitter.com/home">Twitter</a>
+	<br><br><br>
+</body>
