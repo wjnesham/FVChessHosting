@@ -143,12 +143,17 @@
 				.then(res => {
 					res.json().then(data => {
 						if (data.id == null) {
-							var errorMsg = ''
-							for (const key in data['error']) {
-								if (Object.hasOwnProperty.call(data['error'], key)) {
-									errorMsg += (key + ': ' + data['error'][key] + '\n')
+							var errorMsg = '';
+							if (typeof (data['error']) == 'string') {
+								errorMsg = data['error'] + "\nAdd the Lichess Token and try again.";
+							} else {
+								for (const key in data['error']) {
+									if (Object.hasOwnProperty.call(data['error'], key)) {
+										errorMsg += (key + ': ' + data['error'][key] + '\n')
+									}
 								}
 							}
+
 							alert("Error creating tournament! Error = " + errorMsg);
 							return;
 						} else {
