@@ -1,0 +1,64 @@
+div {
+    border: 15px solid mediumslateblue;
+    background-color: turquoise;
+    text-align: center;
+}
+
+padding {
+    padding-left: 75px;
+}
+
+h1 {
+    color: purple;
+    text-shadow: 20px black;
+    font: italic bold 32px Georgia, serif;
+}
+
+h2 {
+    border: 4px solid mediumslateblue;
+    text-align: center;
+    color: aquamarine;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+h3 {
+    padding-left: 5px;
+    padding-top: 50px;
+    padding-bottom: 5px;
+}
+
+h4 {
+    color: yellow;
+    padding-left: 60px;
+    padding-top: 15px;
+}
+
+form {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    min-width: 50%;
+    color: purple;
+}
+
+
+a {
+    color: aqua;
+    text-decoration: underline;
+}
+
+body {
+    background-color: black;
+    color: lavender;
+    padding-left: 15px;
+    padding-right: 15px;
+    font: arial, serif;
+}
+
+highlight {
+    padding-left: 8px;
+    padding-right: 8px;
+
+    background-color: rgb(43, 16, 59);
+    word-wrap: normal;
+}

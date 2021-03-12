@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en" xml:lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Host FV Chess (Firebase)</title>
+
+  <!-- update the version number as needed -->
+  <script defer src="/__/firebase/8.3.0/firebase-app.js"></script>
+  <!-- include only the Firebase features as you need -->
+  <script defer src="/__/firebase/8.3.0/firebase-auth.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-database.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-firestore.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-functions.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-messaging.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-storage.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-analytics.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-remote-config.js"></script>
+  <script defer src="/__/firebase/8.3.0/firebase-performance.js"></script>
+  <!-- 
+      initialize the SDK after all desired features are loaded, set useEmulator to false
+      to avoid connecting the SDK to running emulators.
+    -->
+  <script defer src="/__/firebase/init.js?useEmulator=true"></script>
+
+  <!-- FV Functions -->
+  <script src="fv-functions.js"></script>
+
+
+  <!-- Firebase Login -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const loadEl = document.querySelector('#load');
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+      // // The Firebase SDK is initialized and available here!
+      //
+      // firebase.auth().onAuthStateChanged(user => { });
+      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
+      // firebase.firestore().doc('/foo/bar').get().then(() => { });
+      // firebase.functions().httpsCallable('yourFunction')().then(() => { });
+      // firebase.messaging().requestPermission().then(() => { });
+      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
+      // firebase.analytics(); // call to activate
+      // firebase.analytics().logEvent('tutorial_completed');
+      // firebase.performance(); // call to activate
+      //
+      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
+
+      try {
+        let app = firebase.app();
+        let features = [
+          'auth',
+          'database',
+          'firestore',
+          'functions',
+          'messaging',
+          'storage',
+          'analytics',
+          'remoteConfig',
+          'performance',
+        ].filter(feature => typeof app[feature] === 'function');
+        loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
+      } catch (e) {
+        console.error(e);
+        loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
+      }
+    });
+  </script>
+
+  <!-- Firebase CSS -->
+  <style media="screen">
+    #message {
+      background: white;
+      max-width: fit-content;
+
+      margin: 100px auto 16px;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    #message h2 {
+      color: #ffa100;
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0 0 8px;
+    }
+
+    #message h1 {
+      font-size: 22px;
+      font-weight: 300;
+      color: rgba(0, 0, 0, 0.6);
+      margin: 0 0 16px;
+    }
+
+    #message p {
+      line-height: 140%;
+      margin: 16px 0 24px;
+      font-size: 14px;
+    }
+
+    #message a {
+      display: block;
+      text-align: center;
+      background: #039be5;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    #submitButton input {
+      display: block;
+      text-align: center;
+      background: #039be5;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: white;
+      padding: 16px;
+      border-radius: 4px;
+    }
+
+    #createForm input {
+      display: block;
+      text-align: center;
+      background: wheat;
+      text-decoration: none;
+      color: black;
+      padding: 8px;
+      border-radius: 4px;
+    }
+
+
+    #message,
+    #message a {
+      text-align: center;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    }
+
+    #load {
+      color: rgba(0, 0, 0, 0.4);
+      text-align: center;
+      font-size: 13px;
+    }
+
+    /* @media (max-width: 600px) { */
+    /* } */
+  </style>
+
+  <!-- FV Style -->
+  <link rel="stylesheet" href="fv-style.css">
+
+
+</head>
+
+<body onload="loadSignIn()">
+  <br>
+  <div>
+    <h1>Host Furry Valley Chess Tournament</h1>
+  </div>
+  <br>
+  - step 1: Join chess VC
+  <br>
+  - Step 2: Generate a Lichess token (if you don't have one) and paste it in the form below
+  <br>
+  - Step 3: Modify other settings if you'd like and click the Create Messages button
+  <br>
+  <br>
+  <strong>(Just in case) - If you accidentally refreshed this page => Paste tournament URL in the form below where it
+    says Leave Blank AND set the password if it's not "Pawshop",
+    then the annoucement messages will be recreated.</strong>
+  <br>
+
+
+  <h3>> At 1 hour till: <a href="https://twitter.com/home" target="_blank" rel="noopener noreferrer">Twitter</a> and
+    <a href="https://discord.com/channels/282819774621417483/772261264062939146" target="_blank"
+      rel="noopener noreferrer">#Chess
+      Announcements</a>
+  </h3>
+  <highlight> @Chess<br>
+    Heyo Chess Floofs! In 60 minutes is the <u id="dow1"></u> Night Chess tournament!
+    We will be in the chess
+    VC if you want to talk with other Floofs! Hope to see you there and good luck!
+    <br>
+    Link: <u id="link1"></u>
+    <br>
+    Password: <u id="pass1"></u>
+  </highlight>
+  <br>
+  <br>
+  <h3>> At 30 minutes till: <a href="https://discord.com/channels/282819774621417483/679302617289064468" target="_blank"
+      rel="noopener noreferrer">#Admin Event
+      Hosting</a></h3>
+  <highlight>!lfg chess casual tournament <u id="daycmd"></u> night 8pm</highlight>
+  <br>
+  ** Enter above command and react to one or two blocks. (Message people in those blocks) **
+  <br>
+  <br>
+  <highlight>`Hey floof! In 30 minutes we are going to have the <u id="dow2"></u> Chess Tournament of Furry Valley! If
+    you want to join us, use the link and password given below! Also, you can join the VC to talk to others while
+    playing
+    some chess. Hope to see you there!
+    <br>
+    Link: <u id="link2"></u>
+    <br>
+    Password: <u id="pass2"></u>
+    `
+  </highlight>
+  <br>
+  <br>
+  <h3>> At 5-10 minutes till: <a href="https://discord.com/channels/282819774621417483/772261264062939146"
+      target="_blank" rel="noopener noreferrer">#Chess
+      Announcements</a></h3>
+  <highlight> @Chess<br>
+    Heyo Chess Floofs! In 5 minutes is the <u id="dow3"></u> Night Chess tournament!
+    We will be in the chess VC if you want to talk with other Floofs! Hope to see you there and Good luck!
+    <br>
+    Link: <u id="link3"></u>
+    <br>
+    Password: <u id="pass3"></u>
+  </highlight>
+  <br>
+  <br>
+
+
+  <div id="message">
+    <p style="color: gray; ">Press this button to generate your Lichess authentication token (if you don't already have
+      one.)</p>
+    <a id="tokenLink" href="" target="_blank" rel="noopener noreferrer">Generate Lichess Token</a>
+  </div>
+  <br>
+
+  <h4 id="generated">Fill the below form and click the button to create messages ^-^</h4>
+
+  <div id="message">
+    <form id="createForm">
+      <label for="tournament-url">Tournament URL:</label>
+      <input id="tournament-url" type="text" value="Leave Blank" name="URL">
+      <br>
+      <label for="pass">Password:
+        &emsp;&emsp;&emsp;</label>
+      <input id="pass" type="text" value="Pawshop" name="pass">
+      <br>
+      <br>
+      <label for="token">*Lichess Token:
+        &emsp;</label>
+      <input id="token" type="password" name="token">
+      <br>
+      <br>
+      <strong>- Time Control -</strong>
+      <br>
+      <label for="minutes">Minutes:
+        &emsp;&emsp;&emsp;</label>
+      <input id="minutes" type="number" value="5" name="minutes">
+      <br>
+      <label for="seconds">Seconds:
+        &emsp;&emsp;&emsp;</label>
+      <input id="seconds" type="number" value="5" name="seconds">
+      <br>
+      <br>
+      <strong>- Tournament message -</strong>
+      <br>
+      <label for="description">Description:
+        &emsp;&emsp;</label>
+      <input id="description" type="text" value="Fur Brawls :3" name="description">
+      <br>
+      <br>
+      <input id="submitButton" type="button" onclick="doSubmit()" value="Create Messages">
+    </form>
+  </div>
+
+
+  <br><br><br>
+  <div id="message">
+    <a href="https://discord.com/channels/282819774621417483/772261264062939146" target="_blank"
+      rel="noopener noreferrer">#Chess Announcements</a>
+    <br>
+    <a href="https://discord.com/channels/282819774621417483/679302617289064468" target="_blank"
+      rel="noopener noreferrer">#Admin Event Hosting</a>
+    <br>
+    <a href="https://twitter.com/home" target="_blank" rel="noopener noreferrer">Twitter</a>
+    <br><br>
+    <p id="load">Firebase SDK Loading...&hellip;</p>
+    <br>
+  </div>
+</body>
+
+</html>
