@@ -37,12 +37,19 @@ function loadSignIn() {
     tokenUrlButton.href = url;
 }
 
+
 function getTournamentDate() {
     const cd = new Date();
     var utcDate1 = new Date(cd.toUTCString());
 
-    const est8pm = 13 + (cd.getTimezoneOffset() / 60);
-    const est10am = 3 + (cd.getTimezoneOffset() / 60);
+    var diff = (cd.getTimezoneOffset() / 60) - 4
+
+    var tzOffset = (cd.getTimezoneOffset() / 60) + diff; // - 4; // == 1
+
+    const est8pm = 13 + tzOffset;
+    const est10am = 3 + tzOffset;
+
+    alert("Diff = " + diff + " offset = " + tzOffset + " hour = " + est8pm)
 
     switch (utcDate1.getDay()) {
         case 2:
@@ -129,9 +136,7 @@ function doSubmit() {
         return;
     }
 
-    /// TODO: Replace the line below to cache your token //////////////////////////////////////////////////////////////////////////////
     const personalToken = document.getElementById('token').value; // const personalToken = [your_token];
-    /// TODO: replace the line above with, "const personalToken = [your_token];" //////////////////////////////////////////////////////
 
 
     const formBody = getPostBody();
