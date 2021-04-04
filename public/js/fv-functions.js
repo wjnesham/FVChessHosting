@@ -42,14 +42,13 @@ function getTournamentDate() {
     const cd = new Date();
     var utcDate1 = new Date(cd.toUTCString());
 
-    var diff = (cd.getTimezoneOffset() / 60) - 4
 
-    var tzOffset = (cd.getTimezoneOffset() / 60) + diff; // - 4; // == 1
+    var tzOffset = (2 * (cd.getTimezoneOffset() / 60)) - 4;
 
     const est8pm = 13 + tzOffset;
     const est10am = 3 + tzOffset;
 
-    alert("Diff = " + diff + " offset = " + tzOffset + " hour = " + est8pm)
+    // alert("Diff = " + diff + " offset = " + tzOffset + " hour = " + est8pm)
 
     switch (utcDate1.getDay()) {
         case 0:
