@@ -52,12 +52,20 @@ function getTournamentDate() {
     alert("Diff = " + diff + " offset = " + tzOffset + " hour = " + est8pm)
 
     switch (utcDate1.getDay()) {
+        case 0:
+            // Sun
+            utcDate1.setHours(est10am - 1, 30, 0, 0)
+            break;
         case 2:
             // Tuesday
             utcDate1.setHours(est8pm, 0, 0, 0)
             break;
         case 4:
             // Thursday
+            utcDate1.setHours(est8pm, 0, 0, 0)
+            break;
+        case 5:
+            // Friday
             utcDate1.setHours(est8pm, 0, 0, 0)
             break;
         case 6:
