@@ -42,18 +42,24 @@ function getTournamentDate() {
     const cd = new Date();
     var utcDate1 = new Date(cd.toUTCString());
 
+    var myTimeOffset = parseInt(document.getElementById('timezone').value);
 
-    var tzOffset = (2 * (cd.getTimezoneOffset() / 60)) - 4;
+    if (typeof myTimeOffset != "number") {
+        alert("Time Zone should just be a number +/- from EST. You put type as -> " + typeof myTimeOffset);
+        return;
+    }
 
-    const est8pm = 13 + tzOffset;
-    const est10am = 3 + tzOffset;
+    var tzOffset = (2 * (cd.getTimezoneOffset() / 60)) + myTimeOffset;
+
+    const est8pm = 10 + tzOffset;
+    const est9am = tzOffset - 1;
 
     // alert("Diff = " + diff + " offset = " + tzOffset + " hour = " + est8pm)
 
     switch (utcDate1.getDay()) {
         case 0:
             // Sun
-            utcDate1.setHours(est10am - 1, 30, 0, 0)
+            utcDate1.setHours(est9am, 30, 0, 0)
             break;
         case 2:
             // Tuesday
@@ -69,7 +75,7 @@ function getTournamentDate() {
             break;
         case 6:
             // Sat
-            utcDate1.setHours(est10am, 30, 0, 0)
+            utcDate1.setHours(est9am, 30, 0, 0)
             break;
 
         default:

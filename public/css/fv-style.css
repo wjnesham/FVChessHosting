@@ -8,6 +8,10 @@ padding {
     padding-left: 75px;
 }
 
+input {
+    text-align: center;
+}
+
 h1 {
     color: purple;
     text-shadow: 20px black;

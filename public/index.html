@@ -49,16 +49,15 @@
   - Step 2: Generate a Lichess token (if you don't have one) and paste it in the form below
   <br>
   - Step 3: Modify other settings if you'd like and click the Create Messages button
-  <br>
-  - Or (The above only generates tournament at correct time if you are in Easter Time) -
+  <br><br>
+  - Or go to this link to create tournament manually (not recommended) -
   <br>
   - Step 2: <a href="https://lichess.org/tournament/new">Create chess tournament</a>
   <br>
   - Step 3: Paste link below and enter the password, then click Create Messages
   <br>
   <br>
-  <strong>(Just in case) - If you accidentally refreshed this page => Paste tournament URL in the form below where it
-    says Leave Blank AND set the password if it's not "Pawshop",
+  <strong>(Just in case) - If you accidentally refreshed this page => Paste tournament URL in the form below in the Tournament Url field AND set the password if it's not "Pawshop",
     then the annoucement messages will be recreated.</strong>
   <br>
 
@@ -125,36 +124,47 @@
 
   <div id="message">
     <form id="createForm">
-      <label for="tournament-url">Tournament URL (if created):</label>
-      <input id="tournament-url" type="text" name="URL">
+      <label for="tournament-url">Tournament URL (if created):
+        <br>
+        <input id="tournament-url" type="text" name="URL">
+      </label>
       <br>
       <label for="pass">Password:
-        &emsp;&emsp;&emsp;</label>
-      <input id="pass" type="text" value="Pawshop" name="pass">
-      <br>
+        <br>
+        <input id="pass" type="text" value="Pawshop" name="pass">
+      </label>
+      
+      
       <br>
       <label for="token">*Lichess Token:
-        &emsp;</label>
-      <input id="token" type="password" name="token">
-      <br>
+        <br>
+        <input id="token" type="password" name="token">
+      </label>
       <br>
       <strong>- Time Control -</strong>
       <br>
       <label for="minutes">Minutes:
-        &emsp;&emsp;&emsp;</label>
-      <input id="minutes" type="number" value="5" name="minutes">
+        <br>
+        <input id="minutes" type="number" value="5" name="minutes">
+      </label>
       <br>
       <label for="seconds">Seconds:
-        &emsp;&emsp;&emsp;</label>
-      <input id="seconds" type="number" value="5" name="seconds">
-      <br>
+        <br>
+        <input id="seconds" type="number" value="5" name="seconds">
+      </label>
       <br>
       <strong>- Tournament message -</strong>
       <br>
       <label for="description">Description:
-        &emsp;&emsp;</label>
-      <input id="description" type="text" value="Fur Brawls :3" name="description">
+        <br>
+        <input id="description" type="text" value="Fur Brawls :3" name="description">
+      </label>
       <br>
+      <label for="timezone">Time zone (ie, if you are 10 hours behind EST put -10):
+        <br>
+        <input id="timezone" type="number" value="0" name="timezone">
+      </label>
+      
       <br>
       <input id="submitButton" type="button" onclick="doSubmit()" value="Create Messages">
     </form>
