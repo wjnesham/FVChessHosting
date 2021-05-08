@@ -49,12 +49,26 @@ function getTournamentDate() {
         return;
     }
 
-    var tzOffset = (2 * (cd.getTimezoneOffset() / 60)) + myTimeOffset;
+    var tzOffset = (cd.getTimezoneOffset() / 60);
 
-    const est8pm = 10 + tzOffset;
-    const est9am = tzOffset - 1;
 
-    // alert("Diff = " + diff + " offset = " + tzOffset + " hour = " + est8pm)
+    alert("TZ? = " + tzOffset);
+    // GMT to EST = +5
+    var est8pm = 20 - tzOffset;
+    var est9am = 9 - tzOffset;
+
+    const estOff = tzOffset - 1 + myTimeOffset;
+
+    alert("EstOff = " + estOff);
+    est8pm += estOff;
+    est9am += estOff;
+
+    alert("ET = " + est8pm);
+    if (est8pm === 19) {
+        alert("Time = " + est8pm + " = 19");
+    } else {
+        alert("Time = " + est8pm + " = crap... Off by: " + 19 - est8pm);
+    }
 
     switch (utcDate1.getDay()) {
         case 0:
